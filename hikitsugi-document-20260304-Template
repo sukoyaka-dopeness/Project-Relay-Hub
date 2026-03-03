@@ -1,0 +1,108 @@
+# PROJECT RELAY DOCUMENT
+
+---
+
+## 1. Project Identity
+
+- project_name: ""
+- version: ""
+- updated_at: ""
+- originator: "human"  # First Runner
+- core_priority: ""    # e.g., 思想継承, 自動化, 精度, 速度
+
+---
+
+## 2. Core Philosophy
+
+# 削除・要約・改変禁止
+# ここにプロジェクトの思想・原則を書き込む
+# 例：
+# - Human is ultimate approver
+# - AI is auxiliary, not autonomous
+# - Long-term consistency prioritized over short-term optimization
+
+---
+
+## 3. Operating Principles
+
+- ai_roles: {}  # e.g., {"Gemini": "translator", "Copilot": "structural_validator"}
+- allowed_actions: []  # actions AI may perform
+- forbidden_actions: [] # actions AI must never perform
+- cost_policy: ""       # e.g., zero_cost, mixed
+- automation_stage: ""  # e.g., local_python, github_actions
+
+---
+
+## 4. Decision Log (Append Only)
+
+# 削除・要約禁止。追記のみ。
+# YYYY-MM-DD / Actor / Decision
+
+- [YYYY-MM-DD] Human: 思想の継承を最優先とする。
+- [YYYY-MM-DD] Human: 引き継ぎは1ファイル構成を維持する。
+- [YYYY-MM-DD] AI: 決定に従ってJSONブロックのみ更新可能。
+
+---
+
+## 5. Session History
+
+# セッション単位で履歴を管理。線形・並列両対応。
+
+### Session N
+- session_id: N
+- mode: "linear" | "parallel_synthesis"
+- origin: "human"
+- previous_actors: []  # null or array
+- contributors: []     # AI participants
+- synthesizer: ""      # AI that consolidates if parallel
+- status: ""           # pending | completed | in_review
+- date_started: ""
+- date_completed: ""
+
+---
+
+## 6. Approval Protocol
+
+- Only human can approve phase change or update Decision Log.
+- AI must not edit Core Philosophy or past Decision Log.
+- AI may update Machine-Readable State only.
+
+---
+
+## 7. Machine-Readable State (JSON Block)
+
+# AIはここだけ書き換える
+# 状態と次アクション、承認フラグを保持
+
+```json
+{
+  "current_session_id": 1,
+  "mode": "linear",
+  "previous_actors": null,
+  "contributors": [],
+  "synthesizer": null,
+  "current_actor": "ai1",
+  "approval_required": true,
+  "decision_log_count": 0,
+  "auto_loop_guard": true,
+  "cost_mode": "zero_cost",
+  "next_task": ""
+}
+```
+
+---
+
+## 8. AI Relay Instructions
+
+1. Read Core Philosophy entirely before acting.
+2. Check Decision Log for binding constraints.
+3. Update ONLY the JSON Machine-Readable State unless explicitly instructed.
+4. When multiple contributors exist, respect parallel_synthesis mode.
+5. Ask for human approval before moving to next session or phase.
+
+---
+
+## 9. Sample Inclusion Layer (Optional but Recommended)
+
+- Preserve example translations, code snippets, or idea samples.
+- Do not modify or remove; AI may reference but not overwrite.
