@@ -1,0 +1,101 @@
+{
+  "project_meta": {
+    "name": "Generic AI Relay Project",
+    "version": "2026.03.04",
+    "initiator_type": "Human (Origin / First Runner)",
+    "current_mode": "Thought-First / Parallel-Compatible Relay",
+    "core_priority": "思想継承優先"
+  },
+  "discussion_summary": {
+    "philosophical": [
+      "Human is the first runner; AI is auxiliary and cannot initiate without human intent.",
+      "AI perceives time as a probabilistic sequence; the future = most likely next token.",
+      "Project supports both linear relay and parallel ideation with synthesizer AI.",
+      "Long-term consistency and思想の継承 are prioritized over short-term optimization."
+    ],
+    "automation_strategy": [
+      "Transition from manual copy-paste to JSON-based state management.",
+      "Local Python orchestration preferred initially; can migrate to automated pipelines later.",
+      "Session-based structure allows coexistence of linear and parallel workflows."
+    ],
+    "model_selection": [
+      "Gemini: primary translator and creative strategist.",
+      "Copilot: structural validator, strictly forbidden to add new files without approval."
+    ],
+    "financial_policy": [
+      "Zero-cost baseline; prefer Gemini free tier.",
+      "Manual pasting for API-only or paid models to avoid overspending."
+    ],
+    "remarks": [
+      "First AI has previous_actor: null or ['human'].",
+      "Parallel ideation rounds are supported; a synthesizer AI consolidates contributors.",
+      "Origin is always human; subsequent AIs follow relay rules."
+    ]
+  },
+  "current_inventory": {
+    "files": [
+      "relations.json (structural anchor)",
+      "context_state.json (dynamic baton / Machine-Readable State)",
+      "English-original repository (target for bilingual translation)",
+      "handoff.json (full relay / session history + decision log)"
+    ],
+    "status": "Healthy"
+  },
+  "ongoing_tasks": {
+    "priority_1": "Translate English repo to Bilingual (EN/JP) format using Gemini.",
+    "priority_2": "Refactor Copilot's fragmented directory structures.",
+    "priority_3": "Establish Approval Gateway to prevent AI auto-looping/hallucination.",
+    "priority_4": "Define and test parallel ideation rounds with synthesizer AI."
+  },
+  "ai_role_rules": {
+    "gemini": "Translator, creative strategist; preserve natural Japanese nuance; cannot modify core philosophy or decision log.",
+    "copilot": "Structural validator; cannot add new files or override previous decisions.",
+    "synthesizer": "For parallel ideation sessions, consolidate multiple AI outputs; must preserve minority ideas and contradictions.",
+    "human_manager": "Final approver; can modify core philosophy, approve session transitions, and update decision log."
+  },
+  "decision_log": [
+    {"date":"2026-03-03","actor":"Human","decision":"思想の継承を最優先とする。"},
+    {"date":"2026-03-03","actor":"Human","decision":"引き継ぎは1ファイル構成を維持する。"},
+    {"date":"2026-03-03","actor":"Human","decision":"最初の走者はHumanとし、previous_actorはnullとする。"},
+    {"date":"2026-03-04","actor":"AI","decision":"並列アイデア出しラウンドとSynthesizer統合ラウンドを共存させる構造を提案。"},
+    {"date":"2026-03-04","actor":"Human","decision":"Decision LogとCore Philosophyは削除・要約禁止。"}
+  ],
+  "session_history": [
+    {
+      "session_id": 1,
+      "mode": "linear",
+      "origin": "human",
+      "previous_actors": null,
+      "contributors": ["AI1"],
+      "synthesizer": null,
+      "status": "completed",
+      "date_started": "2026-03-03",
+      "date_completed": "2026-03-03"
+    },
+    {
+      "session_id": 2,
+      "mode": "parallel_synthesis",
+      "origin": "human",
+      "previous_actors": ["AI1"],
+      "contributors": ["AI2","AI3","AI4","AI5"],
+      "synthesizer": "AI6",
+      "status": "pending",
+      "date_started": "2026-03-04",
+      "date_completed": null
+    }
+  ],
+  "machine_readable_state": {
+    "current_session_id": 2,
+    "mode": "parallel_synthesis",
+    "previous_actors": ["AI1"],
+    "contributors": ["AI2","AI3","AI4","AI5"],
+    "synthesizer": "AI6",
+    "current_actor": "AI2",
+    "approval_required": true,
+    "decision_log_count": 5,
+    "auto_loop_guard": true,
+    "cost_mode": "zero_cost",
+    "next_task": "各AIのアイデアを収集"
+  },
+  "next_prompt_recommendation": "Read the Machine-Readable State, check session mode, and propose next actions respecting linear or parallel workflow. Update JSON only; do not modify Decision Log or Core Philosophy."
+}
