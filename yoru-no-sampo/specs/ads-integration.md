@@ -1,131 +1,84 @@
-# ads-integration.md
+# ADS INTEGRATION
 
-## 🌙 広告統合仕様（MVP v0.5）
+## Purpose
+Defines how sponsor elements and advertisements appear inside the world without breaking the quiet atmosphere.
+## 目的
+静かな雰囲気を壊さずにスポンサー要素や広告を世界に組み込む方法を定義する。
 
-本書は「夜の散歩」における **広告の扱い・配置・世界観との統合方法** をまとめたものです。  
-広告は UI の主役ではなく、**夜の風景の一部として自然に存在する**ことを最優先とする。
+# Core Principle
 
----
+## English
+Advertising should feel like part of the city environment rather than intrusive banners. The goal is subtle presence rather than attention capture.
+## 日本語
+広告はバナーのように主張するものではなく、街の一部として自然に存在する形にする。注意を引く広告ではなく、静かな存在感を目指す。
 
-# 1. 広告の基本方針
+# Sponsor Style
 
-- 広告は「夜の街にあるもの」として自然に配置する  
-- 画面に突然ポップアップしない  
-- ユーザーの体験を妨げない  
-- 夜の静けさを壊さない  
-- タップしたときだけ広告ページへ遷移する  
-- 広告は **自販機／コンビニ／看板** の3種類を MVP として採用
+## English
+The system prioritizes sponsor-style integration rather than traditional online ads.
+Sponsors appear as elements that already exist in a city environment.
+## 日本語
+従来のオンライン広告ではなく、スポンサー型の統合を優先する。スポンサーは街の中に自然に存在する要素として表示される。
 
----
+# Example Placements
 
-# 2. 広告の種類（MVP）
+## Bench Backrests
+### English
+Bench backrests may contain small sponsor logos.
+Example: milk brand logo on the back of a park bench.
+### 日本語
+公園ベンチの背もたれに小さなスポンサーのロゴを配置できる。
+例：牛乳ブランドのロゴ。
 
-## ✔ 2-1. 自販機広告
+## Vending Machines
+### English
+Vending machines may contain brand visuals or product branding.
+### 日本語
+自動販売機にブランドビジュアルや商品ロゴを表示できる。
 
-### 配置
-- 住宅地・田舎道に自然に置かれる  
-- 道の端に固定配置  
-- 色は控えめ（赤・青などの一般的な自販機）
+## Store Signs
+### English
+Small shop signs or posters may represent sponsors.
+### 日本語
+小さな店舗看板やポスターとしてスポンサーを表示できる。
 
-### 挙動
-- タップすると広告ページへ遷移  
-- 夜間は光って見える（控えめな発光）
+## Billboards
+### English
+Billboards may appear in the environment as empty placeholders in MVP and later host sponsor visuals.
+### 日本語
+看板はMVPでは空のプレースホルダーとして配置し、将来的にスポンサー表示に使用できる。
 
-### 将来実装
-- **夏の田舎では虫が集まる**  
-  - 小さな虫が光に寄ってくる  
-  - アニメーションは控えめ  
-  - 音はなし  
-  - 季節依存ロジックの一部として扱う
+# MVP Implementation
 
----
+## English
+In the MVP stage, advertisement spaces exist but may remain empty.
+Their purpose is to demonstrate potential sponsor placement.
+## 日本語
+MVP段階では広告スペースは存在するが、空のままの場合がある。
+目的はスポンサー配置の可能性を示すことである。
 
-## ✔ 2-2. コンビニ広告
+# Design Constraints
 
-### 配置
-- 遠景に配置  
-- 画面内に入ったときだけ看板が光る  
-- 店舗全体ではなく **看板部分だけ広告** として扱う
+## English
+Advertising must not disrupt the atmosphere of the night walk.
+Animations, flashing lights, or loud visuals are not allowed.
+## 日本語
+広告は夜の散歩の雰囲気を壊してはならない。
+点滅や派手なアニメーションなどは使用しない。
 
-### 挙動
-- タップすると広告ページへ遷移  
-- 光り方は控えめ（夜の雰囲気を壊さない）
+# Future Sponsor Models
 
----
+## English
+Future versions may introduce alternative support systems beyond traditional advertising.
+## 日本語
+将来的には従来の広告以外の支援モデルも導入する可能性がある。
 
-## ✔ 2-3. 看板広告
-
-### 配置
-- 商店街・都市部に自然に配置  
-- 道沿いの建物の壁面や電柱付近  
-- 遠景にも配置可能
-
-### 挙動
-- タップすると広告ページへ遷移  
-- 点滅や派手なアニメーションは行わない  
-- 夜の静けさを保つため、光は弱め
-
----
-
-# 3. 広告の頻度と距離
-
-### ✔ 基本ルール
-- 広告は **過剰に出さない**  
-- 1画面に1つ以下  
-- 100〜200m（相当距離）に1つ程度  
-- 道の種類に応じて頻度を変える
-
-### ✔ 道ごとの頻度
-- **住宅地**：自販機が時々、看板は少なめ  
-- **田舎道**：自販機が稀に、看板はほぼなし  
-- **商店街**：看板が多め、コンビニも出現
-
----
-
-# 4. 広告の遷移仕様
-
-### ✔ タップ時
-- 広告ページ（外部リンク or 内部広告ページ）へ遷移  
-- 新しいタブで開く（ユーザーの散歩を中断しないため）
-
-### ✔ 戻る時
-- ブラウザの戻る操作で散歩画面に戻れる  
-- 散歩位置は維持される
-
----
-
-# 5. 将来実装（広告関連）
-
-以下は MVP には含めず、将来の拡張として記録する。
-
-## ✔ 5-1. 追加広告の種類
-- バス停のポスター  
-- 電柱の貼り紙  
-- 遠くのビルのネオンサイン  
-- 公園の掲示板  
-- 駅前の看板  
-- 自転車のカゴの広告  
-- 商店街のシャッター広告  
-- 横断幕（商店街限定）
-
-## ✔ 5-2. 季節依存広告
-- 夏の虫（自販機）  
-- 冬のイルミネーション広告  
-- 雨の日の濡れた看板の反射表現
-
-## ✔ 5-3. 時間帯依存広告
-- 深夜帯は光量を弱める  
-- 明け方は看板の光が少し弱くなる
-
----
-
-# 6. 広告に関するデザイン原則
-
-- 夜の静けさを壊さない  
-- 画面の主役は「夜の道」  
-- 広告は風景の一部  
-- ユーザーに押しつけない  
-- 目立たせすぎない  
-- しかし“存在している”ことは自然に伝わる
-
----
+### Examples
+#### English
+- Sponsored benches
+- Sponsored street objects
+- Community-supported locations
+#### 日本語
+- スポンサーベンチ
+- スポンサー街路オブジェクト
+- コミュニティ支援エリア
