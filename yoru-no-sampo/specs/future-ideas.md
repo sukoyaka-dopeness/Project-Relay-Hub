@@ -1,187 +1,158 @@
-# future-ideas.md
+# FUTURE IDEAS
 
-## 🌙 将来実装アイデア集（夜の散歩）
+## Purpose
+This document stores ideas that are not part of the MVP but may be implemented in future versions. Items here are exploratory. When an idea becomes part of the official design, it should be moved into the relevant specification file.
+## 目的
+このドキュメントはMVPには含まれないが将来実装される可能性のあるアイデアを保存する場所である。ここにある項目は探索段階のものであり、正式仕様として採用された場合は各仕様ファイルに移動する。
 
-本書は「夜の散歩」において、MVP 以降に追加できる  
-**世界観を深めるための拡張アイデア**をまとめたものです。  
-MVPでは実装しないが、将来的に自然に組み込める要素を記録する。
+# World Expansion
 
----
+## Map Expansion
+### English
+The MVP map is small and limited. Future versions may allow players to walk into different areas of the city.
+### 日本語
+MVPのマップは小さく限定されている。将来バージョンではプレイヤーが街の別エリアへ歩いて移動できる可能性がある。
 
-# 1. メッセージの時間帯依存
+### Examples
+#### English
+- Shopping street area
+- Residential neighborhood
+- Park paths
+- Riverside walk
+#### 日本語
+- 夜の商店街
+- 住宅街
+- 公園の小道
+- 川沿いの散歩道
 
-### ✔ ロード文言・AIキャラのセリフを時間帯で変化させる
-- 深夜（23:00〜02:00）：静けさ・孤独感  
-- 明け方（04:00〜05:00）：夜明けの気配  
-- 早朝（05:00以降）：朝の空気（※深夜専用のためテストモード時のみ）
+## Area Transition
+### English
+Players may gradually move between different environments while walking.
+Example: shopping street → residential area.
+### 日本語
+プレイヤーが歩いているうちに環境が徐々に変化する可能性がある。
+例：商店街 → 住宅街。
 
-### 例
-- 深夜：「静かな夜です」「遠くで気配がします」  
-- 明け方：「空が少し明るいですね」「夜が終わりそうです」
+# Atmosphere Systems
 
----
+## Apartment Window Lights
+### English
+Apartment windows may show lights turning on and off. As the night becomes deeper, more windows become dark.
+### 日本語
+マンションやアパートの窓の明かりが点灯・消灯する演出。夜が更けるにつれて消灯する部屋が増える。
 
-# 2. 季節依存の演出
+## Closed Night Shops
+### English
+Shopping streets may include closed stores with shutters down to create a late-night atmosphere.
+### 日本語
+夜の商店街ではシャッターが閉まった店舗を配置し、深夜の雰囲気を作る。
 
-### ✔ 夏
-- 田舎の自販機に虫が集まる  
-- 夜空が少し霞む  
-- 遠くでセミの声（音はなし、視覚的な演出のみ）
+## Environmental Details
+### English
+Small environmental elements may appear along the street to make the walk feel alive.
+### 日本語
+散歩の雰囲気を豊かにするため、街の細かな要素を配置する可能性がある。
 
-### ✔ 冬
-- 白い息のアニメーション  
-- 遠景に小さなイルミネーション  
-- コンビニの光が少し強く見える
+### Examples
+#### English
+- Vending machines
+- Convenience store exterior
+- Street signs
+- Park benches
+- Telephone poles
+#### 日本語
+- 自動販売機
+- コンビニの外観
+- 看板
+- 公園のベンチ
+- 電柱
 
-### ✔ 秋
-- 落ち葉が時々舞う  
-- 空気が澄んで星が見えやすい
+# Character Expansion
 
-### ✔ 春
-- 夜桜の並木道（道の種類として追加可能）
+## Character Types
+### English
+Future versions may allow players to choose different character forms.
+### 日本語
+将来バージョンではプレイヤーがキャラクターの形を選択できる可能性がある。
 
----
+### Examples
+#### English
+- Human character
+- Cat character
+- Ghost character
+#### 日本語
+- 人型キャラクター
+- 猫キャラクター
+- おばけキャラクター
 
-# 3. 天気依存の演出
+## Cat Movement
+### English
+The cat character may be able to walk on walls or fences.
+### 日本語
+猫キャラクターは塀や壁の上を歩ける可能性がある。
 
-### ✔ 晴れ
-- 田舎道で星が見える  
-- 空が澄んでいる
+# Atmosphere Events
 
-### ✔ 曇り
-- 星が見えない  
-- 夜空が少し明るい
+## Night Variations
+### English
+Different night conditions may appear in future versions.
+### 日本語
+将来的には夜の状況が変化する可能性がある。
 
-### ✔ 雨
-- 道に反射が出る  
-- 看板の光が滲む  
-- 傘をさした影が遠くに見える（気配として）
+### Examples
+#### English
+- Rainy night
+- Windy night
+- Very quiet late night
+#### 日本語
+- 雨の夜
+- 風の強い夜
+- 深夜の静かな時間
 
-### ✔ 霧
-- 視界が少し白む  
-- 街灯の光が拡散する
+# Support and Monetization
 
----
+## Sponsor Elements
+### English
+Instead of intrusive ads, subtle sponsor elements may appear naturally in the environment.
+### 日本語
+強い広告ではなく、街の景観に自然に溶け込むスポンサー表現を導入する可能性がある。
 
-# 4. 道の種類の拡張
+### Examples
+#### English
+- Bench backrest logos (for example milk brands)
+- Small shop signs
+- Sponsor posters
+#### 日本語
+- ベンチ背もたれのロゴ（例：牛乳ブランド）
+- 小さな店舗看板
+- スポンサーポスター
 
-### ✔ 既存
-- 住宅地  
-- 田舎道  
-- 商店街  
+## Support Model
+### English
+Future support models may include small community support rather than traditional advertising.
+### 日本語
+将来的には通常広告ではなく、小さなコミュニティ支援モデルを導入する可能性がある。
 
-### ✔ 将来追加
-- 夜桜の並木道（春限定）  
-- 海沿いの道（波の気配）  
-- 工場地帯（無機質な光）  
-- 駅前（人の気配が少し多い）  
-- 高架下（低い反響音のような雰囲気）  
-- 山道（街灯がほぼない）
+### Examples
+#### English
+- Stickers
+- Zines
+- Mugs
+#### 日本語
+- ステッカー
+- ジン（小冊子）
+- マグカップ
 
----
+# System Tuning
 
-# 5. 広告の拡張
+## Walking Speed
+### English
+Walking speed will likely require tuning during beta testing.
+### 日本語
+歩行速度はβテストで調整する必要がある可能性が高い。
 
-### ✔ 追加広告の種類
-- バス停のポスター  
-- 電柱の貼り紙  
-- 遠くのビルのネオンサイン  
-- 公園の掲示板  
-- 駅前の看板  
-- 自転車のカゴの広告  
-- 商店街のシャッター広告  
-- 横断幕（商店街限定）
-
-### ✔ 季節依存広告
-- 夏：虫が集まる自販機  
-- 冬：イルミネーション広告  
-- 雨：濡れた看板の反射表現
-
-### ✔ 時間帯依存広告
-- 深夜：光量を弱める  
-- 明け方：光が少し弱くなる
-
----
-
-# 6. AIキャラの拡張
-
-### ✔ キャラ追加
-- 夜風さん（風の気配を語る）  
-- 街灯くん（光の揺らぎを語る）  
-- ねこ（気まぐれに現れる）  
-- 雨雲さん（天気に応じて登場）
-
-### ✔ セリフの時間帯依存
-- 深夜：静けさ  
-- 明け方：夜明けの気配  
-- 雨：濡れた道の雰囲気  
-- 冬：冷たい空気の描写
-
----
-
-# 7. ユーザーの気配の拡張
-
-### ✔ 足音の強弱  
-- 近い／遠い  
-- 歩く速度の違い  
-- 立ち止まる気配
-
-### ✔ 気配の種類
-- 傘をさしている影  
-- 自転車のライト  
-- 遠くの人影  
-- すれ違う気配（名前は出ない）
-
----
-
-# 8. 朝の演出の強化
-
-### ✔ 夜明けの色変化をより自然に
-- 04:30〜05:00 の間に空がゆっくり変化  
-- 街灯が順に消えていく  
-- 遠くの空が少し赤みを帯びる
-
-### ✔ 明け方限定の演出
-- 鳥の影が横切る（音はなし）  
-- 遠くの空に薄い雲が見える  
-- 流れ星が消える（夜の終わり）
-
----
-
-# 9. その他の将来アイデア
-
-### ✔ 風の演出
-- 木々が揺れる  
-- 草がそよぐ  
-- 風の方向が変わる
-
-### ✔ 季節のイベント
-- 七夕（星が増える）  
-- 夏祭りの遠い灯り  
-- クリスマスの控えめな装飾  
-- 大晦日の静けさ
-
-### ✔ ユーザーの歩行履歴
-- どの道を歩いたかの記録  
-- ただし個人特定につながらない形で
-
----
-
-# 10. 実装優先度（暫定）
-
-### 高
-- 季節依存（夏の虫）  
-- 天気依存（星の表示）  
-- 道の種類の拡張  
-
-### 中
-- AIキャラの追加  
-- 朝の演出の強化  
-- 広告の種類追加  
-
-### 低
-- 季節イベント  
-- 歩行履歴  
-- 風の演出  
-
----
+## Encounter Frequency
+### English
+Encounter probability may be adjusted to keep the world feeling alive but not crowded.
+### 日本語
+世界が生きている感じを保ちつつ混雑しすぎないよう、すれ違い確率を調整する可能性がある。
