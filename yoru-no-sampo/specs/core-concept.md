@@ -1,158 +1,33 @@
-# core-concept.md
+# CORE_CONCEPT.md
 
-## 🌙 サービス概要
-**「夜の散歩」**は、深夜に眠れない人が、  
-ただ静かに夜道を歩き、  
-“だれかも起きている気配”を感じられるウェブサービスです。
+## English
+The core concept of the project is to create a quiet, contemplative online space that allows people to walk through a night city without competition, scores, or goals.  
+The experience emphasizes subtle presence, occasional encounters, and a sense of shared space without pressure.  
+Players in the MVP appear as shadow-like figures; future expansions may include human-shaped characters, cats, or ghosts.  
+Messaging and stamps are minimal in the MVP, with future expansions allowing a full set of interactions.  
+Advertising and sponsorship exist only in ways that do not disrupt the calm atmosphere, and MVP ad spaces may be empty to indicate potential placement.  
+The system prioritizes simplicity, maintainability, and gradual extensibility, including map expansion, building illumination changes, and transitions from commercial to residential areas.
 
-- チャットなし  
-- 出会い系要素なし  
-- 匿名  
-- ただ歩くだけ  
-- ただ気配を感じるだけ  
-
-ユーザーは深夜の道をゆっくり歩きながら、  
-他の誰かの存在を遠くに感じることで、  
-少しだけ安心できるように設計されています。
-
----
-
-## 🌙 体験の核となるコンセプト
-
-### ✔ 1. 静けさ
-サービス全体を通して、  
-ユーザーに何かを“させる”ことを極力避ける。  
-操作は最小限、UIは控えめ、音はなし。
-
-### ✔ 2. 気配
-他ユーザーの存在は「点」や「足音のような動き」で示唆される。  
-名前やメッセージは表示しない。  
-“誰かがいる”という淡い感覚だけを残す。
-
-### ✔ 3. 干渉しない優しさ
-ユーザーに寄り添うが、  
-励ましすぎない、話しかけすぎない、誘導しない。  
-「こんばんは」「静かな夜ですね」程度の距離感。
+Key principles:
+- **No optimization incentives:** Players do not need to achieve or compete.  
+- **Ambient interactions:** Encounters are subtle; messages and stamps are optional.  
+- **Minimalist interface:** The UI is understated, keeping focus on the walk.  
+- **Gradual expansion:** Streets, characters, interactions, and atmosphere can grow without breaking the core experience.  
+- **Controlled randomness:** Encounters, street details, and occasional interactive elements (e.g., talking poles) are tuned to maintain calm and immersion.
 
 ---
 
-## 🌙 基本操作（歩く）
+## 日本語
+本プロジェクトの核となるコンセプトは、競争、スコア、目標のない静かで考え込むことができるオンライン空間を提供することです。  
+プレイヤーは夜の街を歩き、偶然の出会いと共有感を楽しむことができますが、強制やプレッシャーはありません。  
+MVPではプレイヤーは影のような存在として表示され、将来的には人型キャラクター、猫、オバケなども選択可能です。  
+メッセージやスタンプはMVPでは最小限で、将来は全ての機能が使える予定です。  
+広告やスポンサーは、静けさを損なわない形でのみ存在し、MVPでは空の広告スペースを置き、将来の配置可能性を示します。  
+システムはシンプルさ、保守性、段階的な拡張性を優先し、マップ拡張、建物の点灯・消灯、商店街から住宅地への移行なども将来追加可能です。
 
-### ✔ 左右タップで歩く
-- **画面右側をタップ → 右へ歩く**  
-- **画面左側をタップ → 左へ歩く**  
-- タップを離すと止まる  
-- 速度は一定でゆっくり
-
-ボタンは置かず、画面全体を操作領域にすることで、  
-UIの存在感を消し、夜道を歩く感覚を優先する。
-
----
-
-## 🌙 夜の風景
-
-### ✔ 道の種類
-- **住宅地**：街灯が等間隔に並ぶ  
-- **田舎道**：街灯が少なく、星が見える  
-- **商店街**：看板や灯りが多い（広告と自然に統合）
-
-### ✔ 夜空
-- 基本は濃い紺色  
-- **朝が近づく（04:30〜05:00）とだけ、ゆっくり明るくなる**  
-- 変化は気づかないほどゆっくり
-
-### ✔ 星
-- **田舎道のみ表示**  
-- 都市部では表示しない  
-- 天気依存（晴れのときのみ）※将来実装
-
-### ✔ 街灯
-- 道の種類に応じて自然に配置  
-- 稀に一度だけ「ふっ」と点滅する  
-- **朝が近づくと消灯**  
-- 画面内にある場合のみ消灯アニメーションを実行
-
----
-
-## 🌙 インタラクション
-
-### ✔ スタンプ（20種）
-夜の雰囲気を壊さない、控えめな表現。
-
-### ✔ 定型文（30種）
-5文字以内の短い言葉。  
-チャットではなく「夜の空気に溶ける言葉」。
-
-### ✔ 羊（隠し機能）
-- コメント連打で小さな羊が現れる  
-- 退出メニューに「羊を数える」もある  
-- 羊は“夜の住人”として扱う
-
----
-
-## 🌙 AIキャラクター
-AIキャラは控えめに存在し、  
-30〜90秒に一度だけ短い一言をつぶやく。
-
-例：  
-- 「風が静かですね」  
-- 「遠くで足音がします」  
-- 「夜は深いですね」
-
-ユーザーに話しかけるのではなく、  
-“夜の空気の一部”として存在する。
-
----
-
-## 🌙 広告（夜の風景に溶け込む）
-
-### ✔ 自販機
-- 夜道に自然に置かれる  
-- タップすると広告ページへ  
-- 夏の田舎では虫が集まる（将来実装）
-
-### ✔ コンビニ
-- 遠景に配置  
-- 看板部分だけ広告  
-- 画面内に入ったときだけ光る
-
-### ✔ 看板
-- 商店街や都市部に自然に配置  
-- タップで広告ページへ
-
-※ 将来追加：バス停ポスター、貼り紙、ネオンサインなど
-
----
-
-## 🌙 退出と終了演出
-
-### ✔ 退出（任意）
-- 「また夜が来たら」  
-- 「おやすみなさい」  
-（退出ボタンを押したときのみ表示）
-
-### ✔ 終了演出
-- **流れ星が1本だけ静かに横切る**  
-- そのまま暗転
-
-夜の余韻を壊さない、最小限の演出。
-
----
-
-## 🌙 技術スタック（MVP）
-- **Vanilla JS**  
-- **PWA**  
-- **Firebase Realtime Database（匿名Auth）**
-
-MVPではこれで十分。  
-将来、複雑な集計や検索が必要になったら Firestore へ移行可能。
-
----
-
-## 🌙 将来実装（記録）
-- メッセージの時間帯依存  
-- 季節依存（夏の虫など）  
-- 天気依存（星の表示）  
-- 追加広告（バス停、貼り紙、ネオンサインなど）  
-- 道の種類の拡張  
-- 朝の演出の強化
+主要な原則：
+- **最適化の必要なし：** プレイヤーは達成や競争を求められない。  
+- **環境的な交流：** すれ違いは控えめで、メッセージやスタンプは任意。  
+- **ミニマルUI：** UIは控えめで、散歩体験に集中できる。  
+- **段階的な拡張：** 街、キャラクター、交流、雰囲気はコア体験を損なわず成長可能。  
+- **制御された偶然：** 出会いや街の詳細、時折のインタラクティブ要素（例：喋る電柱）は、静けさと没入感を保つよう調整される。
