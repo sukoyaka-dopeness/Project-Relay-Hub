@@ -1,107 +1,43 @@
-# encounter-system.md
+# ENCOUNTER_SYSTEM.md
 
-## 概要
-プレイヤー同士がすれ違った瞬間に、相手が最後に選択していたメッセージまたはスタンプを短時間表示する。
-会話・通知・ログなどは発生しない。接触は「静かな気配」のみ。
+## English
+This document describes how player encounters work in the night walk project.
 
-このシステムの目的は以下：
-- 他者の存在を感じる
-- 最小限のコミュニケーション
-- SNS的インタラクション（返信・評価）を発生させない
+### Principles
+- **Subtlety:** Encounters are brief and non-intrusive.  
+- **Controlled randomness:** The frequency and occurrence of encounters are tuned to maintain a calm atmosphere.  
+- **Minimal interaction:** Players do not engage in competition or actions with each other; only messages and stamps may be seen.  
+- **Density control:** Even if more players are online, the visible density remains low to avoid crowding.
 
-## 基本動作
+### MVP Implementation
+- Players appear as shadows.  
+- When passing another player, their last message or stamp is briefly visible.  
+- Encounter frequency: roughly 1 person per minute (adjustable during beta).  
+- Street elements (e.g., talking poles, vending machines) can occasionally appear or trigger subtle interactions.
 
-### すれ違い判定
-プレイヤー同士の距離が一定以内になったときに発生する。
+### Future Expansion
+- Player characters may be human, cat, or ghost forms.  
+- NPCs and environment elements may trigger interactive events.  
+- Encounter probability can be tuned dynamically based on area, time, or event.
 
-判定例：
-- 半径：1〜2キャラクター距離
-- 画面内で交差した瞬間
+---
 
-このとき encounter が発生する。
+## 日本語
+このドキュメントは、夜の散歩プロジェクトにおけるプレイヤーのすれ違い（出会い）について説明する。
 
-### 表示内容
-相手プレイヤーが **最後に選択していたもの** が表示される。
+### 原則
+- **控えめ:** 出会いは短時間で、雰囲気を壊さない。  
+- **制御された偶然:** 出会いの頻度や発生は静かさを保つよう調整。  
+- **最小限の交流:** プレイヤー同士が競ったりアクションを起こすことはなく、メッセージやスタンプのみ表示される。  
+- **密度管理:** 同時接続人数が増えても、表示されるプレイヤーの密度は低く保たれる。
 
-種類：
-- メッセージ
-- スタンプ
+### MVP実装
+- プレイヤーは影として表示。  
+- 他プレイヤーとすれ違うと、最後に選択したメッセージやスタンプが一時的に表示される。  
+- 出会いの頻度: およそ1分に1人（β版で調整可能）。  
+- 街の要素（例：喋る電柱、自販機）が時折出現し、控えめなインタラクションを発生させることがある。
 
-プレイヤーは事前に一つだけ選択している。
-
-例：
-- 「こんばんは」
-- 「おつかれさま」
-- 🌙
-- 🐈
-
-### 表示位置
-表示位置はキャラクターの近く。
-
-例：
-- キャラクターの上
-- キャラクターの横
-
-画面の視認性を優先して決定する。
-
-### 表示時間
-短時間のみ表示。
-
-目安：
-- 約1〜2秒
-
-その後自動で消える。
-
-ログ保存はしない。
-
-## 同時すれ違い
-
-複数プレイヤーが近くにいる場合、それぞれ独立して表示される。
-
-例：
-- 3人と同時にすれ違う
-- 3つのメッセージがそれぞれ表示
-
-重なりすぎないよう、位置を少しずらして表示する。
-
-## 再表示制限
-
-同一プレイヤーと短時間に何度も encounter が発生しないよう制限する。
-
-例：
-- 再表示クールダウン：10〜30秒
-
-これにより「ぐるぐる回ってメッセージを連続表示する」行為を防ぐ。
-
-## メッセージ未設定
-
-プレイヤーがメッセージ／スタンプを設定していない場合：
-
-- 何も表示しない
-- すれ違いのみ発生
-
-沈黙もこの世界の一部として扱う。
-
-## オフラインプレイヤー（将来実装）
-
-将来的に、過去の歩行ログを使った「ゴーストプレイヤー」を実装可能。
-
-ゴーストとすれ違った場合も同様に encounter を発生させる。
-
-これにより：
-
-- 人が少ない時間帯でも街の気配を維持
-- 時間の層を感じられる世界
-
-## 設計原則
-
-このシステムは以下の原則を守る。
-
-1. 会話を生まない  
-2. 評価を生まない  
-3. 通知を生まない  
-4. ログを残さない  
-5. ただ「すれ違う」
-
-プレイヤー同士の接触は、  
-**一瞬の気配としてのみ存在する。**
+### 将来の拡張
+- プレイヤーキャラクターは人型、猫、オバケなどに拡張可能。  
+- NPCや環境要素がインタラクティブなイベントを発生させる。  
+- 出会いの確率はエリア、時間、イベントに応じて動的に調整可能。
