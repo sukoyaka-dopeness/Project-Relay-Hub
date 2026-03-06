@@ -1,121 +1,62 @@
-# undecided-items.md
+# UNDECIDED ITEMS
 
-## 🌙 未決定項目と意思決定テンプレート（夜の散歩）
+## Purpose
+Tracks questions that remain unresolved in the project.
+Items should be moved to other specification files once decisions are made.
+## 目的
+まだ決定していない仕様を記録する。
+決定された場合は該当仕様ファイルへ移動する。
 
-本書は「夜の散歩」における **未決定事項を整理し、決定のための基準・手順を明確化する**ためのファイルである。  
-単なる TODO リストではなく、後続の開発者やAIが迷わず判断できるように  
-**“決め方そのもの”を記録するテンプレート**として設計する。
+# Player Representation
 
----
+## Human Characters
+### English
+Future versions may introduce visible human-shaped characters.
+Exact design style remains undecided.
+### 日本語
+将来人型キャラクターを導入する可能性がある。
+具体的なデザインスタイルは未決定。
 
-# 1. 未決定項目（現時点）
+# Map Scale
 
-以下は、2026年3月時点で未決定のまま残している項目。  
-MVPには含めないが、将来の判断が必要になる。
+## City Size
+### English
+The size of the playable city area is not yet finalized.
+The MVP map will be small, but the exact dimensions remain undecided.
+### 日本語
+プレイ可能な街の広さはまだ確定していない。
+MVPマップは小規模だが、具体的なサイズは未決定。
 
-### ✔ ビジュアル関連
-- 雨・霧・雪などの天気表現の具体的な描画方法  
-- 海沿いの道・工場地帯など新しい道のビジュアル仕様  
-- 夜桜の並木道の色味・花びらの量  
-- 冬の白い息の描画方法（粒子 or ぼかし）
+# Encounter Density
 
-### ✔ インタラクション関連
-- AIキャラの追加（夜風さん・街灯くん・ねこ など）  
-- 他ユーザーの気配の種類（傘の影、自転車ライトなど）  
-- スタンプの追加基準（季節ごとに増やすか）
+## Player Encounter Rate
+### English
+How often players should encounter others while walking is still being tuned.
+### 日本語
+散歩中に他プレイヤーと出会う頻度は調整が必要。
 
-### ✔ 広告関連
-- 新しい広告の種類（バス停・貼り紙・ネオンサインなど）の優先順位  
-- 広告の季節依存（冬のイルミネーション広告など）  
-- 広告の光量調整（深夜・明け方で変えるか）
+# Subscription Features
 
-### ✔ システム関連
-- 道の切り替え方法（ユーザー選択 or 自動）  
-- 天気データの取得方法（外部API or 疑似ランダム）  
-- 季節判定のロジック（端数月の扱い）
+## Premium Avatars
+### English
+Future subscription features may include special character types such as ghosts or cats.
+Pricing and structure are undecided.
+### 日本語
+サブスクリプションで特別キャラクター（猫・おばけなど）を提供する可能性がある。
+料金体系は未決定。
 
----
+# Monetization Balance
 
-# 2. 意思決定テンプレート
+## Sponsor Integration Level
+### English
+The balance between sponsorship elements and atmosphere requires further testing.
+### 日本語
+スポンサー要素と雰囲気のバランスは今後の検証が必要。
 
-未決定項目を決める際は、以下のテンプレートに沿って判断する。
+# Beta Testing
 
----
-
-## 【項目名】
-（例：夜桜の並木道のビジュアル仕様）
-
-### 1. この項目は何を決めるものか？
-- 例：夜桜の色味・花びらの量・風の強さなど
-
-### 2. 決定が必要になる理由
-- 例：春の季節演出を自然にするため  
-- 例：道の種類を増やす際の基準を統一するため
-
-### 3. 決定の基準（世界観に基づく）
-- 静けさを壊さない  
-- 夜の空気を優先する  
-- 派手すぎない  
-- 現実の夜道として自然である  
-- 季節感は控えめに
-
-### 4. 技術的制約
-- Canvas で描画可能か  
-- パフォーマンスに影響しないか  
-- 既存レイヤー構造に収まるか
-
-### 5. 決定後に更新するファイル
-- core-concept.md  
-- ui-flow.md  
-- canvas-structure.md  
-- ads-integration.md（広告関連の場合）  
-- future-ideas.md（将来実装に移動する場合）
-
-### 6. 決定の最終案
-（ここに最終決定を書き込む）
-
----
-
-# 3. 決定の優先順位（ガイドライン）
-
-### 優先度：高
-- 世界観に影響するもの  
-- ユーザー体験の根幹に関わるもの  
-- 夜の静けさを損なう可能性があるもの
-
-### 優先度：中
-- 季節・天気などの演出  
-- 道の種類の追加  
-- AIキャラの追加
-
-### 優先度：低
-- スタンプの追加  
-- 細かいアニメーションの調整  
-- 季節イベント（七夕・クリスマスなど）
-
----
-
-# 4. 決定の記録方法
-
-決定した項目は、以下のように記録する：
-
-```
-【決定済み】
-- 夜空の色変化は 04:30〜05:00 のみ
-- 終了演出は流れ星
-- 都市部では星を描かない
-- 広告は自販機・コンビニ・看板の3種
-```
-
-未決定項目はテンプレートに沿って追記する。
-
----
-
-# 5. このファイルの目的
-
-- 未決定項目を「放置」ではなく「管理」する  
-- 後続のAIや開発者が迷わず判断できるようにする  
-- 世界観と技術仕様の一貫性を保つ  
-- プロジェクトの長期的な拡張を容易にする
-
----
+## Testing Method
+### English
+The format and scale of beta testing are not yet defined.
+### 日本語
+βテストの方法と規模は未決定。
