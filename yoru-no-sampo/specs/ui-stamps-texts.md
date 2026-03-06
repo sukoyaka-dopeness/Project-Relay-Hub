@@ -1,83 +1,43 @@
-# スタンプ & 定型5文字リスト (ui-stamps-texts.md)
+# UI_STAMPS_TEXTS.md
 
-このファイルは、サービス「Night Lantern Stroll (仮)」のインタラクション要素（スタンプ + 定型5文字選択式）のリストをまとめたものです。  
-MVPではこれらをベースに実装。必要に応じて追加/調整可能。
+## English
+This document describes the UI design for displaying messages and stamps during the night walk.
 
-## スタンプリスト（感情・状態表現中心、20種）
-深夜の微妙なニュアンスを抽象的に表現。アイコン＋軽いアニメーション（フェードイン→数秒で消える）で表示。  
-タップで自分の位置にふわっと浮かぶ。
+### Message Display
+- Players always carry their **last selected message**.
+- When encountering another player, the message is briefly visible above their character.
+- MVP: limited set of messages.
+- Future: all messages from message-library.md can be used.
 
-1. ……（三点リーダー） → 連打で隠し羊カウント発動のトリガー
-2. ふぅ（ため息）
-3. 羊（可愛い羊のシルエット）
-4. 月（静かな月）
-5. 街灯（ぽつんと光る街灯）
-6. 目（開いた目 or 眠い目）
-7. 雲（ぼんやりした雲）
-8. 星（きらっと光る星）
-9. 波（ゆらゆら波）
-10. 風（そよそよ風）
-11. 時計（針が遅く回る時計）
-12. 布団（くるまった布団）
-13. コーヒー（でもカフェイン？）
-14. ハート（優しい小さなハート）
-15. ？（疑問符）
-16. Zzz（寝顔）
-17. 暗闇（黒い丸）
-18. 灯り（小さな灯台）
-19. 足音（歩くシルエット）
-20. ねこ（眠そうな猫）
+### Stamp Display
+- Stamps are small icons that can be sent or displayed with messages.
+- MVP: minimal set.
+- Future: full set available, including seasonal or sponsor-themed stamps.
 
-### 追加候補（拡張時用）
-- 夜風（風の線）
-- 遠くの車（ライトの線）
-- 雨粒（ぽつぽつ）
+### UI Principles
+- **Minimalist:** UI elements are small and unobtrusive.
+- **Focus on the walk:** Messages and stamps appear only when relevant.
+- **Centralized player:** Player remains in the center; the map moves around them.
+- **Sloped perspective:** Side view of characters to allow visibility of ads and street elements.
 
-## 定型5文字リスト（30種）
-深夜の「独り言」感を重視。短くて詩的・ぼんやりした表現中心。  
-スタンプと交互に使っても自然になるよう設計。すべて平仮名でもいい。
+---
 
-1. まだ起きてる
-2. ねむくない
-3. ふぅ……
-4. 羊数えてる
-5. 街灯きれい
-6. 静かすぎる
-7. 目が冴える
-8. また夜だ
-9. 眠れないね
-10. 風が冷たい
-11. 時計見てる
-12. 明日が怖い
-13. なんかいい
-14. ぼーっとして
-15. 雨の音
-16. 遠くの車
-17. ひとりだな
-18. もう朝？
-19. 考えすぎ
-22. でも大丈夫
-23. 夜が好き
-24. 暗闇好き
-25. 星見てる
-26. 布団冷たい
-27. 頭回る
-28. ため息出る
-29. 明日起きる？
-30. もう少しだけ
+## 日本語
+このドキュメントは、夜の散歩でのメッセージとスタンプのUI設計を示す。
 
-### 追加候補（拡張時用）
-- 羊が逃げた
-- 羊また増えた
-- 灯りが揺れる
-- 朝が遠い
-- 静寂いいね
+### メッセージ表示
+- プレイヤーは常に**最後に選択したメッセージ**を保持する。
+- 他のプレイヤーとすれ違うと、メッセージが一時的にキャラクター上に表示される。
+- MVPでは限定的なメッセージセット。
+- 将来は message-library.md のすべてのメッセージが利用可能。
 
-## 使い方のルール（実装時の参考）
-- スタンプ：1分に1回制限（スパム防止）
-- 定型5文字：選択式のみ（自由入力禁止 → 出会い系化防止）
-- 組み合わせ：スタンプ連打（特に「…」）で隠し機能（羊カウント）発動
-- 表示：吹き出しでふわっと浮かび、数秒で消える（会話にならない距離感を保つ）
-- AI使用：AIアイコン（街灯くんなど）はこのリストからランダム/パターンで選んで自然に送る
+### スタンプ表示
+- スタンプは小さなアイコンで、メッセージに添えて表示可能。
+- MVPでは最小限のセット。
+- 将来は季節やスポンサー向けスタンプを含むフルセットを使用可能。
 
-このリストはMVPの基盤。ユーザー反馈で増減・調整予定。
+### UIの原則
+- **ミニマル:** UI要素は小さく、目立たないようにする。
+- **散歩に集中:** メッセージとスタンプは必要時のみ表示。
+- **プレイヤー中央固定:** プレイヤーは画面中央に固定、マップがその周囲で移動。
+- **斜め視点:** キャラクターを横から見て、広告や街の要素も見えるようにする。
