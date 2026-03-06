@@ -1,158 +1,220 @@
 # FUTURE IDEAS
 
 ## Purpose
-This document stores ideas that are not part of the MVP but may be implemented in future versions. Items here are exploratory. When an idea becomes part of the official design, it should be moved into the relevant specification file.
+Collects ideas and expansions that are intentionally **not part of the MVP** but may be implemented in later versions.
+This file works as a holding area for future concepts. When an idea becomes concrete, it should be moved into a dedicated specification file.
 ## 目的
-このドキュメントはMVPには含まれないが将来実装される可能性のあるアイデアを保存する場所である。ここにある項目は探索段階のものであり、正式仕様として採用された場合は各仕様ファイルに移動する。
+MVPには含めないが、将来のバージョンで実装する可能性があるアイデアをまとめる。
+ここは将来構想の保管場所として機能し、具体化したものは専用の仕様ファイルへ移動する。
 
 # World Expansion
 
-## Map Expansion
+## Expanding City Areas
 ### English
-The MVP map is small and limited. Future versions may allow players to walk into different areas of the city.
+The city may gradually expand beyond the initial MVP map. Different neighborhood types may appear.
 ### 日本語
-MVPのマップは小さく限定されている。将来バージョンではプレイヤーが街の別エリアへ歩いて移動できる可能性がある。
+初期のMVPマップの外側に街が拡張され、異なる種類のエリアが登場する可能性がある。
 
 ### Examples
 #### English
-- Shopping street area
-- Residential neighborhood
-- Park paths
-- Riverside walk
+- shopping streets
+- residential neighborhoods
+- small parks
+- riverside paths
 #### 日本語
-- 夜の商店街
+- 商店街
 - 住宅街
-- 公園の小道
-- 川沿いの散歩道
+- 小さな公園
+- 川沿いの道
 
-## Area Transition
+## Area Transitions
 ### English
-Players may gradually move between different environments while walking.
-Example: shopping street → residential area.
+Players may be able to walk continuously between different areas.
+For example, a shopping street may gradually transition into a residential area.
 ### 日本語
-プレイヤーが歩いているうちに環境が徐々に変化する可能性がある。
-例：商店街 → 住宅街。
+異なるエリアを歩いて移動できる可能性がある。
+例：商店街から住宅街へ自然に移動できる。
 
-# Atmosphere Systems
+# Environmental Atmosphere
 
 ## Apartment Window Lights
 ### English
-Apartment windows may show lights turning on and off. As the night becomes deeper, more windows become dark.
+Apartment buildings may display windows with lights turning on and off.
 ### 日本語
-マンションやアパートの窓の明かりが点灯・消灯する演出。夜が更けるにつれて消灯する部屋が増える。
+マンションやアパートの窓の明かりが点灯したり消えたりする演出。
 
-## Closed Night Shops
-### English
-Shopping streets may include closed stores with shutters down to create a late-night atmosphere.
-### 日本語
-夜の商店街ではシャッターが閉まった店舗を配置し、深夜の雰囲気を作る。
+### Dynamic Night Progression
+#### English
+As the night becomes deeper, more apartment windows gradually turn off.
+#### 日本語
+夜が更けるにつれて、消灯している部屋が増える演出。
 
-## Environmental Details
+## Shopping Street at Night
 ### English
-Small environmental elements may appear along the street to make the walk feel alive.
+Shopping streets may contain closed shops with shutters down.
 ### 日本語
-散歩の雰囲気を豊かにするため、街の細かな要素を配置する可能性がある。
+シャッターが閉まった深夜の商店街を表現する。
+
+## Convenience Stores
+### English
+Convenience stores may appear as bright locations within the dark city.
+### 日本語
+暗い街の中で明るく光るコンビニを配置する可能性がある。
+
+# Characters and Avatars
+
+## Human Characters
+### English
+Future versions may introduce visible human-shaped characters instead of abstract silhouettes.
+### 日本語
+将来的に抽象的な影ではなく、人型キャラクターを導入する可能性がある。
+
+## Cat Character
+### English
+A cat character may be selectable by the player.
+Cats may walk along walls or fences rather than the street.
+### 日本語
+プレイヤーが猫キャラクターを選択できる可能性がある。
+猫は道路ではなく塀やフェンスの上を歩く。
+
+## Ghost Character
+### English
+Special character types such as ghosts may become available as optional features or subscriptions.
+### 日本語
+おばけなどの特別なキャラクターがサブスクリプションなどで利用可能になる可能性がある。
+
+# Expanded Message System
+
+## Larger Message Library
+### English
+Future versions may include a larger library of preset messages.
+All message ideas collected in earlier project files may be included.
+### 日本語
+将来バージョンでは定型メッセージの種類を増やす可能性がある。
+過去のプロジェクトファイルにあるメッセージ案をすべて含める。
+
+## Expanded Stamp Library
+### English
+More visual stamps may be added over time.
+### 日本語
+スタンプの種類を増やす可能性がある。
+
+# Sponsored City Elements
+
+## Sponsored Benches
+### English
+Bench backrests may contain small sponsor logos.
+Example: milk brand logos.
+### 日本語
+公園ベンチの背もたれにスポンサーの小さなロゴを配置できる。
+例：牛乳ブランド。
+
+## Vending Machine Branding
+### English
+Vending machines may display product branding.
+### 日本語
+自販機に商品ブランドを表示できる。
+
+## Storefront Sponsors
+### English
+Small store signs or posters may represent sponsors.
+### 日本語
+小さな店舗看板やポスターにスポンサーを表示できる。
+
+## Billboard Sponsors
+### English
+City billboards may host sponsor visuals.
+### 日本語
+街の看板にスポンサー表示を行う可能性がある。
+
+# Support and Funding
+
+## Community Support
+### English
+Players may support the project through voluntary contributions.
+### 日本語
+プレイヤーが任意の支援でプロジェクトをサポートできる可能性がある。
+
+## Merchandise
+### English
+Small merchandise items may support the project financially.
+Examples include stickers, zines, and mugs.
+### 日本語
+小さなグッズ販売によってプロジェクトを支援する可能性がある。
+例：ステッカー、ジン、マグカップ。
+
+# Seasonal Atmosphere
+
+## Weather Variations
+### English
+Future versions may include weather changes.
+### 日本語
+将来的に天候の変化を導入する可能性がある。
 
 ### Examples
 #### English
-- Vending machines
-- Convenience store exterior
-- Street signs
-- Park benches
-- Telephone poles
+- rain
+- fog
+- winter snow
 #### 日本語
-- 自動販売機
-- コンビニの外観
-- 看板
-- 公園のベンチ
-- 電柱
+- 雨
+- 霧
+- 雪
 
-# Character Expansion
+# Sound Atmosphere
 
-## Character Types
+## English
+Future versions may introduce subtle ambient sounds to deepen the night atmosphere.
+There is no background music. Sound is environmental rather than musical.
+
+### Examples
+- distant traffic
+- wind
+- insects
+- night birds
+- vending machine hum
+- distant train
+- convenience store door chime (rare)
+
+## 日本語
+将来バージョンでは夜の雰囲気を強めるために環境音を追加する可能性がある。
+BGMは使用せず、音は環境音として扱う。
+
+### 例
+- 遠くの車の音
+- 風
+- 虫の声
+- 夜の鳥
+- 自販機の低い機械音
+- 遠くの電車
+- コンビニのドアチャイム（まれ）
+
+# Gameplay Adjustments
+
+## Walking Speed Tuning
 ### English
-Future versions may allow players to choose different character forms.
+Walking speed should be adjusted during beta testing to ensure a comfortable pace.
 ### 日本語
-将来バージョンではプレイヤーがキャラクターの形を選択できる可能性がある。
+歩く速度はβテストで調整する。
+
+# Long-term Ideas
+
+## Seasonal Events
+### English
+Occasional seasonal events may appear in the city.
+### 日本語
+季節イベントが街に現れる可能性がある。
+
+## Special Night Encounters
+### English
+Rare atmospheric events may occur during walks.
+### 日本語
+散歩中にまれな雰囲気イベントが発生する可能性がある。
 
 ### Examples
 #### English
-- Human character
-- Cat character
-- Ghost character
+- stray cats appearing
+- unusual lights in the city
 #### 日本語
-- 人型キャラクター
-- 猫キャラクター
-- おばけキャラクター
-
-## Cat Movement
-### English
-The cat character may be able to walk on walls or fences.
-### 日本語
-猫キャラクターは塀や壁の上を歩ける可能性がある。
-
-# Atmosphere Events
-
-## Night Variations
-### English
-Different night conditions may appear in future versions.
-### 日本語
-将来的には夜の状況が変化する可能性がある。
-
-### Examples
-#### English
-- Rainy night
-- Windy night
-- Very quiet late night
-#### 日本語
-- 雨の夜
-- 風の強い夜
-- 深夜の静かな時間
-
-# Support and Monetization
-
-## Sponsor Elements
-### English
-Instead of intrusive ads, subtle sponsor elements may appear naturally in the environment.
-### 日本語
-強い広告ではなく、街の景観に自然に溶け込むスポンサー表現を導入する可能性がある。
-
-### Examples
-#### English
-- Bench backrest logos (for example milk brands)
-- Small shop signs
-- Sponsor posters
-#### 日本語
-- ベンチ背もたれのロゴ（例：牛乳ブランド）
-- 小さな店舗看板
-- スポンサーポスター
-
-## Support Model
-### English
-Future support models may include small community support rather than traditional advertising.
-### 日本語
-将来的には通常広告ではなく、小さなコミュニティ支援モデルを導入する可能性がある。
-
-### Examples
-#### English
-- Stickers
-- Zines
-- Mugs
-#### 日本語
-- ステッカー
-- ジン（小冊子）
-- マグカップ
-
-# System Tuning
-
-## Walking Speed
-### English
-Walking speed will likely require tuning during beta testing.
-### 日本語
-歩行速度はβテストで調整する必要がある可能性が高い。
-
-## Encounter Frequency
-### English
-Encounter probability may be adjusted to keep the world feeling alive but not crowded.
-### 日本語
-世界が生きている感じを保ちつつ混雑しすぎないよう、すれ違い確率を調整する可能性がある。
+- 野良猫の出現
+- 街の不思議な光
