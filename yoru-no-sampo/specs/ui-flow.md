@@ -1,168 +1,53 @@
-# ui-flow.md
-
-## 🌙 UI Flow — 夜の散歩（MVP v0.5）
-
-本書は「夜の散歩」MVPにおける **UI の流れ・画面遷移・主要インタラクション** をまとめたものです。  
-世界観を壊さず、静けさと気配を中心に設計しています。
-
----
-
-# 0. アクセス
-ユーザーが URL にアクセスすると、即座にローディング画面へ遷移する。
-
----
-
-# 1. ローディング画面（静かな導入）
-
-### 表示される文言（ランダム）
-- 「誰かも起きているようです」
-- 「遠くで気配がします」
-- 「静かな夜です」
-- 「深夜の空気ですね」
-- 「こんばんは」
-- 「夜ですね」
-
-### 挙動
-- 2〜3秒の静かなフェードイン  
-- 余計なボタンや誘導は置かない  
-- ローディング後、自動で次のステップへ
-
----
-
-# 2. 時間帯チェック
-
-### ローカル時間を取得し、以下の分岐を行う：
-
-### ✔ 深夜帯（23:00〜05:00）
-→ 自動で「気分アイコン選択」へ進む
-
-### ✔ それ以外の時間帯
-- 「この散歩道は深夜専用です」
-- 小さく「テストモードで入る」ボタン  
-  - 押すと通常と同じフローへ  
-  - MVPでは ON（実装する）
-
----
-
-# 3. 気分アイコン選択
-
-### 表示される気分（例）
-- 眠れない  
-- 不安  
-- 静かにしたい  
-- 考えごと  
-- ただ散歩  
-
-### 挙動
-- 1つ選ぶと散歩画面へ遷移  
-- Firebase に「入室ログ（匿名ID＋気分＋時刻）」を記録
-
----
-
-# 4. 散歩画面（メインUI）
-
-## 4-1. 基本操作（歩く）
-- **画面右側をタップ → 右へゆっくり歩く**
-- **画面左側をタップ → 左へゆっくり歩く**
-- タップを離すと止まる
-- ボタンは置かない（UIの存在感を消すため）
-
----
-
-## 4-2. 夜の風景
-
-### ✔ 道の種類
-- **住宅地**：街灯が等間隔に並ぶ  
-- **田舎道**：街灯が少なく、星が見える  
-- **商店街**：看板や灯りが多い（広告と自然に統合）
-
-### ✔ 夜空
-- 基本は濃い紺色  
-- **04:30〜05:00 の間だけ、ゆっくり明るくなる**  
-- 変化は気づかないほどゆっくり
-
-### ✔ 星
-- **田舎道のみ表示**  
-- 都市部では表示しない  
-- 天気依存（晴れのみ）※将来実装
-
-### ✔ 街灯
-- 道の種類に応じて自然に配置  
-- 稀に一度だけ「ふっ」と点滅  
-- **朝が近づくと消灯**  
-- 画面内にある場合のみ消灯アニメーションを実行
-
----
-
-## 4-3. インタラクション
-
-### ✔ スタンプ（20種）
-- 夜の雰囲気を壊さない控えめなデザイン  
-- 画面上にふわっと浮かぶ
-
-### ✔ 定型文（30種）
-- 5文字以内  
-- チャットではなく「夜の空気に溶ける言葉」
-
-### ✔ 羊（隠し機能）
-- コメント連打で小さな羊が現れる  
-- 羊は夜の住人として扱う
-
-### ✔ 他ユーザーの気配
-- 点や淡い動きで存在を示す  
-- 名前やメッセージは表示しない
-
-### ✔ AIキャラ（控えめ）
-- 30〜90秒に一度だけ短い一言  
-- 例：「風が静かですね」「遠くで足音がします」
-
----
-
-## 4-4. 広告（夜の風景に溶け込む）
-
-### ✔ 自販機
-- 夜道に自然に置かれる  
-- タップで広告ページへ  
-- 夏の田舎では虫が集まる（将来実装）
-
-### ✔ コンビニ
-- 遠景に配置  
-- 看板部分だけ広告  
-- 画面内に入ったときだけ光る
-
-### ✔ 看板
-- 商店街や都市部に自然に配置  
-- タップで広告ページへ
-
----
-
-# 5. 退出（任意）
-
-### 退出メニュー
-- 「また夜が来たら」
-- 「おやすみなさい」
-
-※ ブラウザを閉じた場合は何も表示しない  
-※ 退出ボタンを押したときのみ表示
-
----
-
-# 6. 終了演出（確定）
-
-### ✔ 流れ星が1本だけ静かに横切る  
-- 音はなし  
-- 画面上部を短く横切る  
-- そのまま暗転して終了
-
-夜の余韻を壊さない、最小限の演出。
-
----
-
-# 7. 将来実装（UI関連）
-
-- メッセージの時間帯依存  
-- 季節依存（夏の虫など）  
-- 天気依存（星の表示）  
-- 追加広告（バス停、貼り紙、ネオンサインなど）  
-- 道の種類の拡張  
-- 朝の演出の強化  
+# UI FLOW
+## Overview
+The user interface is designed to be minimal. The goal is to let users enter the nighttime street immediately and begin walking without menus or complex setup.
+## 概要
+ユーザーインターフェースは最小構成を目指します。ユーザーはメニューや複雑な設定なしに、すぐ夜の街に入り歩き始めることができます。
+## App Launch
+When the application starts, the user enters the street immediately. There is no lobby or waiting room.
+## 起動
+アプリを起動すると、ユーザーはすぐ街に入ります。ロビーや待機画面はありません。
+## Player Position
+The player character is fixed at the center of the screen. The environment scrolls horizontally as the player walks.
+## プレイヤー位置
+プレイヤーキャラクターは画面中央に固定されます。プレイヤーが歩くと街が横方向にスクロールします。
+## Movement Controls
+Movement controls may differ by platform.
+### PC
+Movement may use keyboard controls such as arrow keys.
+### Smartphone
+Movement uses tap input. Tapping the screen moves the player in the chosen direction.
+## 移動操作
+操作方法はプラットフォームによって異なる可能性があります。
+### PC
+キーボード操作（例：矢印キー）で移動します。
+### スマートフォン
+タップ操作で移動します。画面をタップするとその方向へ歩きます。
+## Encountering Other Players
+When two players pass each other, no interaction is required. The players simply pass by.
+## 他プレイヤーとのすれ違い
+プレイヤー同士がすれ違ったとき、特別な操作は必要ありません。ユーザーはそのまますれ違います。
+## Message or Stamp Display
+At the moment two players pass each other, the other player's most recently selected message or stamp appears briefly.
+## メッセージまたはスタンプ表示
+プレイヤーがすれ違う瞬間、相手ユーザーが最後に選択したメッセージまたはスタンプが短時間表示されます。
+## Stamp Selection
+Users can select a small preset message or stamp. The selected stamp becomes the message shown when passing other players.
+## スタンプ選択
+ユーザーはあらかじめ用意された短いメッセージまたはスタンプを選択できます。選択されたスタンプが、他のユーザーとすれ違うときに表示されます。
+## Bench Interaction
+Some benches allow the player to sit. Sitting is optional and provides a quiet pause in the walk.
+## ベンチ
+一部のベンチには座ることができます。座ることは任意で、散歩の途中で静かな休憩になります。
+## Environmental Interaction
+Most environment objects are not interactive. The environment exists primarily to create atmosphere.
+## 環境オブジェクト
+多くの街オブジェクトはインタラクションを持ちません。街の要素は主に雰囲気を作るために存在します。
+## Advertising Surfaces
+Certain objects contain surfaces intended for sponsorship or advertising. These may appear as empty signs or placeholder textures in the MVP version.
+## 広告表示面
+いくつかのオブジェクトにはスポンサーや広告の表示面があります。MVP段階では空の看板やプレースホルダーとして表示される場合があります。
+## Session Duration
+There is no fixed session time. Users can walk for as long as they like.
+## セッション時間
+セッション時間に制限はありません。ユーザーは好きなだけ歩くことができます。
