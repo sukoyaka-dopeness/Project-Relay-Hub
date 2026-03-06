@@ -1,186 +1,91 @@
-# firebase-structure.md
+# FIREBASE_STRUCTURE.md
 
-## 🌙 Firebase Structure — 夜の散歩（MVP）
+## English
+This document describes the Firebase data structure for the night walk project.  
+It is designed to support MVP functionality while allowing future expansion.
 
-本書は「夜の散歩」MVPにおける  
-**Firebase Realtime Database / Anonymous Auth の使用方針とデータ構造**  
-をまとめたものです。
+### Collections and Documents
 
-Firebase は以下の目的に限定して使用する：
+#### Players
+- `playerId` (document ID)
+  - `position`: {x, y} – current coordinates on the map
+  - `characterType`: "shadow" | "human" | future options ("cat", "ghost")
+  - `lastMessageId`: reference to Messages collection
+  - `lastStampId`: reference to Stamps collection
+  - `timestamp`: last update time
 
-- 他ユーザーの「気配」（presence）の同期  
-- スタンプ送信ログ  
-- 定型文送信ログ  
-- 広告クリックログ  
-- 気分アイコンの入室ログ  
-- 匿名ユーザー識別（Anonymous Auth）
+#### Map
+- `mapId` (document ID)
+  - `tiles`: 2D array of tile data
+  - `buildings`: array of building objects
+    - `id`
+    - `position`
+    - `type` (residential, commercial, park, etc.)
+    - `lightState` (on/off, for future time-based animation)
+  - `adSpaces`: array of sponsor/advertisement placeholders
 
----
+#### Messages
+- `messageId` (document ID)
+  - `text`
+  - `type`: "MVP" | "future"
+  - `authorId` (optional, for future user-generated content)
 
-# 1. Authentication（匿名認証）
+#### Stamps
+- `stampId` (document ID)
+  - `imageUrl`
+  - `type`: "MVP" | "future"
 
-### ✔ Anonymous Auth を使用
-- ユーザー名は不要  
-- 個人情報は扱わない  
-- UID のみを presence やログに使用
+### Real-Time Sync
+- Players collection updates trigger WebSocket broadcasts
+- Position, lastMessageId, and lastStampId are propagated to nearby players
 
-```
-auth/
-  uid: string
-```
-
----
-
-# 2. Presence（他ユーザーの気配）
-
-他ユーザーの位置を「点」で表現するためのデータ。
-
-### ✔ 更新頻度  
-- 1〜2秒ごとに現在位置を送信  
-- 切断時は自動で削除（onDisconnect）
-
-### ✔ データ構造
-
-```
-presence/
-  {uid}/
-    x: number        // 現在の横位置（スクロール位置）
-    mood: string     // 気分アイコン（入室時に選択）
-    updatedAt: number // タイムスタンプ
-```
-
-### ✔ 表示仕様  
-- 名前は表示しない  
-- 点の揺れや淡い動きはクライアント側で処理  
-- mood は UI には出さず、内部的な分類に使用
+### Future Considerations
+- Additional fields for seasonal events or area-based sponsorship
+- Expansion to new streets or residential zones
+- Optional sound fields for atmosphere (ambient sounds, wind, subtle city noise)
 
 ---
 
-# 3. 入室ログ（気分アイコン）
+## 日本語
+このドキュメントは「夜の散歩」プロジェクトにおけるFirebaseのデータ構造を示します。  
+MVP機能をサポートしつつ、将来的な拡張にも対応できる設計です。
 
-ユーザーが入室時に選んだ気分を記録する。
+### コレクションとドキュメント
 
-### ✔ 用途  
-- 深夜の利用傾向の分析  
-- 気分ごとの滞在時間の把握（将来）
+#### Players（プレイヤー）
+- `playerId`（ドキュメントID）
+  - `position`: {x, y} – マップ上の現在位置
+  - `characterType`: "影" | "人型" | 将来の選択肢 ("猫", "おばけ")
+  - `lastMessageId`: Messagesコレクションへの参照
+  - `lastStampId`: Stampsコレクションへの参照
+  - `timestamp`: 最終更新時間
 
-### ✔ データ構造
+#### Map（マップ）
+- `mapId`（ドキュメントID）
+  - `tiles`: タイルの2次元配列データ
+  - `buildings`: 建物オブジェクトの配列
+    - `id`
+    - `position`
+    - `type`（住宅、商業、公園など）
+    - `lightState`（点灯/消灯、将来的な時間変化用）
+  - `adSpaces`: スポンサー・広告スペースのプレースホルダー配列
 
-```
-enterLogs/
-  {logId}/
-    uid: string
-    mood: string
-    timestamp: number
-```
+#### Messages（メッセージ）
+- `messageId`（ドキュメントID）
+  - `text`
+  - `type`: "MVP" | "将来実装"
+  - `authorId`（将来のユーザー生成コンテンツ用、任意）
 
----
+#### Stamps（スタンプ）
+- `stampId`（ドキュメントID）
+  - `imageUrl`
+  - `type`: "MVP" | "将来実装"
 
-# 4. スタンプログ
+### リアルタイム同期
+- Playersコレクションの更新はWebSocketでブロードキャスト
+- 位置、lastMessageId、lastStampIdを近くのプレイヤーに伝える
 
-ユーザーがスタンプを送信したときに記録する。
-
-### ✔ 用途  
-- スタンプの人気分析  
-- 不正利用の検知（連打など）
-
-### ✔ データ構造
-
-```
-stampLogs/
-  {logId}/
-    uid: string
-    stampId: string   // どのスタンプか
-    x: number         // 送信時の位置
-    timestamp: number
-```
-
----
-
-# 5. 定型文ログ
-
-ユーザーが定型文を送信したときに記録する。
-
-### ✔ 用途  
-- どの言葉がよく使われるかの分析  
-- 時間帯ごとの傾向
-
-### ✔ データ構造
-
-```
-textLogs/
-  {logId}/
-    uid: string
-    textId: string    // 定型文のID
-    x: number
-    timestamp: number
-```
-
----
-
-# 6. 広告クリックログ
-
-広告（自販機・コンビニ・看板）がタップされたときに記録する。
-
-### ✔ 用途  
-- 広告効果の測定  
-- どの広告が自然に見えるかの分析  
-- 将来の広告最適化
-
-### ✔ データ構造
-
-```
-adClickLogs/
-  {logId}/
-    uid: string
-    adType: string     // vending, convenience, signboard
-    adId: string       // 個別広告のID
-    x: number          // クリック時の位置
-    timestamp: number
-```
-
----
-
-# 7. データの保持方針
-
-### ✔ presence  
-- 常に最新のみ  
-- 切断時に自動削除
-
-### ✔ 各種ログ（enterLogs / stampLogs / textLogs / adClickLogs）  
-- MVPでは削除しない  
-- 将来、一定期間でアーカイブする可能性あり
-
----
-
-# 8. セキュリティルール（概要）
-
-### ✔ 読み取り  
-- presence は全員が読み取り可能  
-- ログは読み取り不可（管理者のみ）
-
-### ✔ 書き込み  
-- presence は本人のみ  
-- ログは誰でも書き込み可能（匿名）
-
-※ 詳細な security rules は MVP-spec.md に統合予定
-
----
-
-# 9. 今後の拡張（将来実装）
-
-- 天気依存のデータ（晴れ／雨／霧）  
-- 季節依存のデータ（夏の虫など）  
-- 道の種類の切り替えログ  
-- AIキャラの発話ログ  
-- 朝の演出のトリガー記録
-
----
-
-# 10. このファイルの目的
-
-- Firebase の役割を明確にする  
-- データ構造を統一し、後続の開発者やAIが迷わないようにする  
-- MVP の範囲を明確にし、将来実装との境界を保つ
-
----
+### 将来の拡張
+- 季節イベントやエリアごとのスポンサー用フィールド追加
+- 新しい通りや住宅地への拡張
+- 雰囲気向上のための音声フィールド（環境音、風、街のささやきなど）
