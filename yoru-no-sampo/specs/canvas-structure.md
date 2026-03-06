@@ -1,218 +1,101 @@
-# canvas-structure.md
-
-## 🌙 Canvas Structure — 夜の散歩（MVP）
-
-本書は「夜の散歩」における **Canvas レイヤー構成・描画順序・アニメーション設計** をまとめたものです。  
-夜の静けさと気配を壊さないため、Canvas は最小限の構造でありながら、柔らかい表現ができるように設計する。
-
----
-
-# 1. 全体構成（レイヤー）
-
-Canvas は 1 枚でも実装可能だが、保守性と視覚効果のために **論理レイヤー** を分けて考える。
-
-```
-Canvas（1枚）
- ├─ Layer 0: 夜空（背景）
- ├─ Layer 1: 遠景（建物・山・商店街のシルエット）
- ├─ Layer 2: 星（田舎道のみ）
- ├─ Layer 3: 街灯（光源＋ポール）
- ├─ Layer 4: 道（アスファルト・ライン）
- ├─ Layer 5: 広告（自販機・コンビニ・看板）
- ├─ Layer 6: 他ユーザーの気配（点・影）
- ├─ Layer 7: スタンプ・定型文（浮遊アニメーション）
- └─ Layer 8: 終了演出（流れ星）
-```
-
-※ 実際には 1 枚の Canvas に順番に描画する  
-※ レイヤーは論理的な概念であり、DOM 上は 1 枚
-
----
-
-# 2. 描画順序（重要）
-
-描画順序は夜の雰囲気を決める最重要ポイント。
-
-```
-1. 夜空（グラデーション）
-2. 遠景（建物・山）
-3. 星（田舎道のみ）
-4. 街灯（光源 → ポール）
-5. 道（アスファルト）
-6. 広告（自販機・看板）
-7. 他ユーザーの気配（点）
-8. スタンプ・定型文
-9. 流れ星（終了演出）
-```
-
----
-
-# 3. 各レイヤーの仕様
-
-## 3-1. 夜空（Layer 0）
-- `createLinearGradient` で濃紺のグラデーション  
-- 朝（04:30〜05:00）だけ色をゆっくり変化  
-- 都市部・住宅地・田舎道で色は共通  
-- 星は別レイヤーで描く
-
----
-
-## 3-2. 遠景（Layer 1）
-道の種類に応じて変化：
-
-### ✔ 住宅地
-- 家のシルエット  
-- 低い建物  
-- 光はほぼなし
-
-### ✔ 田舎道
-- 山のシルエット  
-- 木々の影  
-- 光はなし
-
-### ✔ 商店街
-- 建物のシルエット  
-- 看板の枠（光は弱め）
-
----
-
-## 3-3. 星（Layer 2）
-- 田舎道のみ  
-- 小さな白点  
-- `globalAlpha` を微妙に揺らして明滅  
-- 都市部では描かない  
-- 天気依存（晴れのみ）※将来実装
-
----
-
-## 3-4. 街灯（Layer 3）
-### ✔ 光源
-- `radialGradient` で柔らかい光  
-- 稀に一度だけ点滅（1セッションに1〜2回）
-
-### ✔ ポール
-- 細い黒い線  
-- 光源の下に描く
-
-### ✔ 朝の消灯
-- 光源の `alpha` をゆっくり 0 にする  
-- ポールは残る
-
----
-
-## 3-5. 道（Layer 4）
-- 濃いグレーのアスファルト  
-- 住宅地：白線あり  
-- 田舎道：白線なし  
-- 商店街：タイル風の影
-
----
-
-## 3-6. 広告（Layer 5）
-
-### ✔ 自販機
-- 画像 or Canvas 描画  
-- 控えめな発光  
-- 夏の田舎では虫が集まる（将来実装）
-
-### ✔ コンビニ
-- 遠景に配置  
-- 看板部分だけ光る
-
-### ✔ 看板
-- 商店街の建物に自然に配置  
-- 点滅はしない
-
----
-
-## 3-7. 他ユーザーの気配（Layer 6）
-- 小さな白い点  
-- ゆっくり揺れる  
-- 近づいたり遠ざかったりする  
-- Firebase Realtime DB の presence で同期  
-- 名前は表示しない
-
----
-
-## 3-8. スタンプ・定型文（Layer 7）
-
-### ✔ スタンプ
-- PNG/SVG を描画  
-- `y -= 0.5` でふわっと浮く  
-- `alpha` を徐々に下げて消える
-
-### ✔ 定型文
-- `fillText`  
-- 透明度を下げて消える  
-- 5文字以内
-
----
-
-## 3-9. 終了演出（Layer 8）
-- 画面上部を横切る **流れ星**  
-- 0.5秒で消える  
-- 音はなし  
-- その後、暗転
-
----
-
-# 4. アニメーションループ
-
-Canvas は `requestAnimationFrame` を使って 60fps で更新する。
-
-```
-function animate() {
-  drawNightSky();
-  drawBackground();
-  drawStars();
-  drawStreetLights();
-  drawRoad();
-  drawAds();
-  drawPresence();
-  drawStamps();
-  drawFlowingStar(); // 終了演出
-  requestAnimationFrame(animate);
-}
-```
-
----
-
-# 5. スクロール処理
-
-### ✔ 左右タップで歩く
-- 右タップ → `scrollX += speed`  
-- 左タップ → `scrollX -= speed`  
-- speed は一定（ゆっくり）
-
-### ✔ 背景の移動
-- 遠景はゆっくり（パララックス効果）  
-- 道・広告・街灯は通常速度  
-- 星は背景固定（動かない）
-
----
-
-# 6. タップ判定（広告・スタンプ）
-
-Canvas の座標を使って判定：
-
-```
-canvas.addEventListener("click", (e) => {
-  const x = e.clientX - canvas.offsetLeft;
-  const y = e.clientY - canvas.offsetTop;
-  checkAdClick(x, y);
-});
-```
-
----
-
-# 7. 将来拡張（Canvas）
-
-- 雨の反射  
-- 霧の拡散  
-- 雪の粒子  
-- 夜桜の花びら  
-- 夏の虫（自販機）  
-- 遠景のネオンサイン  
-- 波の反射（海沿いの道）
-
----
+# CANVAS STRUCTURE
+## Overview
+The rendering system uses a side-view scrolling street. The player character stays fixed at the center of the screen while the environment moves horizontally.
+## 概要
+描画システムは横スクロールの街構造を使用します。プレイヤーは画面中央に固定され、街の環境が左右にスクロールします。
+## Camera Model
+The camera is centered on the player. The player position on screen does not move. The world scrolls relative to the player movement.
+## カメラモデル
+カメラはプレイヤーを中心に固定されます。プレイヤーの画面上の位置は動きません。プレイヤーの移動に応じて世界がスクロールします。
+## Coordinate System
+The world is structured as a horizontal map.
+Key properties:
+- X axis represents street distance
+- Y axis represents vertical layering
+- Player position updates the world offset
+## 座標システム
+世界は横方向のマップとして構成されます。
+主な構造：
+- X軸：街の距離
+- Y軸：高さレイヤー
+- プレイヤー移動によりワールドオフセットが更新される
+## Layer Structure
+The canvas is divided into layered visual elements.
+Back to front rendering order:
+1. Sky layer
+2. Far background (distant buildings)
+3. Main buildings
+4. Street environment objects
+5. Player characters
+6. Foreground objects
+7. Light effects
+## レイヤー構造
+キャンバスは複数のレイヤーで構成されます。
+描画順（奥→手前）
+1. 空レイヤー
+2. 遠景建物
+3. 建物
+4. 街オブジェクト
+5. プレイヤー
+6. 前景オブジェクト
+7. 光エフェクト
+## Environment Object Layer
+Street objects appear along the walking path.
+Examples:
+- utility poles
+- vending machines
+- benches
+- streetlights
+- shop shutters
+- signboards
+Objects are anchored to world coordinates.
+## 環境オブジェクトレイヤー
+街のオブジェクトは歩道に沿って配置されます。
+例：
+- 電柱
+- 自動販売機
+- ベンチ
+- 街灯
+- 商店シャッター
+- 看板
+オブジェクトはワールド座標に固定されます。
+## Advertising Surfaces
+Certain objects contain surfaces intended for sponsorship or advertising.
+Examples:
+- bench back panels
+- vending machine logos
+- shop signs
+- billboard panels
+These may initially appear as placeholder textures.
+## 広告配置面
+いくつかのオブジェクトにはスポンサー・広告用の表示面があります。
+例：
+- ベンチ背もたれ
+- 自販機ロゴ面
+- 商店看板
+- ビルボード
+初期段階ではプレースホルダーテクスチャでも構いません。
+## Player Layer
+Players appear on the street level. Player avatars may initially be simple silhouettes or minimal characters. Future versions may allow different avatar types.
+## プレイヤーレイヤー
+プレイヤーは道路レベルに表示されます。初期段階ではシルエットなどの簡易キャラクターを使用します。将来は異なるアバタータイプが追加される可能性があります。
+## Visibility Radius
+Only nearby players are rendered. Players outside the visibility range are not shown. This maintains a sparse nighttime feeling.
+## 可視範囲
+近くにいるプレイヤーのみ描画されます。可視範囲外のプレイヤーは表示されません。これにより夜の静かな密度を保ちます。
+## Lighting
+Streetlights provide local light sources. Light intensity should remain soft to maintain nighttime atmosphere.
+## 照明
+街灯は局所的な光源として機能します。光は柔らかく、夜の雰囲気を保つようにします。
+## Performance Considerations
+The canvas system should prioritize simplicity.
+Key goals:
+- low rendering cost
+- minimal animation
+- lightweight assets
+## パフォーマンス設計
+キャンバス構造はシンプルさを優先します。
+目標：
+- 低レンダリング負荷
+- 最小限のアニメーション
+- 軽量アセット
