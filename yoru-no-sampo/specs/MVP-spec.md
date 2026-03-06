@@ -1,225 +1,162 @@
-# MVP-spec.md
+# MVP SPECIFICATION
 
-## 🌙 夜の散歩 — MVP 仕様書（v0.1）
+## Overview
+The MVP provides a minimal shared night walking experience.
+Players walk through a small quiet town at night. They may occasionally encounter another player. Interaction is intentionally limited.
+The goal of the MVP is to validate whether a quiet shared night space can work with a very small number of concurrent users.
 
-本書は「夜の散歩」MVP（Minimum Viable Product）の  
-**世界観・UI・技術仕様・データ構造**を1つに統合した公式仕様書である。
+## 概要
+MVPは「最小構成の夜の共在散歩体験」を提供します。
+プレイヤーは静かな夜の街を歩きます。ときどき別のプレイヤーとすれ違います。インタラクションは意図的に最小限にします。
+目的は、少人数同時接続でも成立する夜の共在空間が成立するかを検証することです。
 
-MVPの目的は、  
-「深夜に眠れない人が、静かな夜道を歩き、誰かの気配を感じられる体験」  
-を最小構成で実現すること。
+## Core Experience
+The core experience consists of three simple actions:
+- Walk through the town
+- Occasionally encounter another player
+- Send a small stamp
+There is no chat, no profiles, and no performance pressure.
 
----
+## コア体験
+コア体験は次の3つのみです。
+- 街を歩く
+- ときどき他のプレイヤーと出会う
+- 小さなスタンプを送る
+チャット、プロフィール、自己表現の圧力はありません。
 
-# 1. 世界観（Core Concept）
+## Player Perspective
+The player character remains fixed at the center of the screen.
+The environment scrolls as the player walks.
+If the map has edges, the player can walk to the edge.
 
-## 1-1. 体験の核
-- **静けさ**：UIは控えめ、音はなし  
-- **気配**：他ユーザーは点や淡い動きで示す  
-- **干渉しない優しさ**：励ましすぎない、誘導しない  
-- **儀式化しない**：ようこそ・始めましょう等の文言を排除
+## プレイヤー視点
+プレイヤーは常に画面中央に固定されます。
+プレイヤーが歩くと街の背景がスクロールします。
+マップに端がある場合、プレイヤーはその端まで歩くことができます。
 
-## 1-2. 夜の風景
-- 夜空は濃紺のグラデーション  
-- **04:30〜05:00 の間だけゆっくり明るくなる**  
-- 道の種類：住宅地 / 田舎道 / 商店街  
-- 星は田舎道のみ  
-- 街灯は稀に点滅し、朝に消灯
+## Visual Perspective
+The visual style is a side-view street perspective.
+The player appears as if viewed from the side while walking through the street.
+This allows environmental elements such as:
+- utility poles
+- vending machines
+- benches
+- shop fronts
+- advertising signs
+to appear naturally along the street.
 
-## 1-3. 広告（夜の風景に溶け込む）
-- 自販機  
-- コンビニ（看板のみ広告）  
-- 看板（商店街）  
-※ ポップアップ広告は一切なし
+## 視覚的視点
+ビジュアルは横から見た街の視点（サイドビュー）です。
+プレイヤーは街を横から見た形で歩きます。
+この視点により、次のような要素を自然に配置できます。
+- 電柱
+- 自動販売機
+- ベンチ
+- 商店のシャッター
+- 看板や広告
 
----
+## Encounters
+Players occasionally encounter others while walking.
+Encounters should feel natural and infrequent, similar to passing someone during a real night walk.
+Player density should remain visually sparse even if the total user count increases.
 
-# 2. UIフロー（UI Flow）
+## 出会い
+プレイヤーは歩いているとときどき他のプレイヤーに出会います。
+これは現実の夜の散歩のように自然でまれに起きるものとします。
+ユーザー数が増えても画面上の密度は低く保たれます。
 
-## 2-1. アクセス → ロード画面
-ランダム文言：
-- 「誰かも起きているようです」
-- 「遠くで気配がします」
-- 「静かな夜です」
-- 「深夜の空気ですね」
-- 「こんばんは」
-- 「夜ですね」
+## Interaction
+Interaction is intentionally minimal.
+The MVP includes a small set of stamps such as:
+- hello
+- nod
+- moon
+- good night
+No chat is included in the MVP.
 
-## 2-2. 時間帯チェック
-- 深夜（23:00〜05:00）→ 通常入室  
-- 昼 → 「深夜専用です」＋テストモード
+## インタラクション
+インタラクションは意図的に最小限にします。
+MVPでは次のような少数のスタンプのみを使用します。
+- hello
+- nod
+- moon
+- good night
+チャット機能はMVPには含めません。
 
-## 2-3. 気分アイコン選択
-- 眠れない / 不安 / 静かにしたい / 考えごと / ただ散歩  
-- 選択後、入室ログを記録
+## Environment Elements
+The environment creates the atmosphere of the night walk.
+MVP elements include:
+- streetlights
+- utility poles
+- benches
+- vending machines
+- closed shop shutters
+- apartment buildings
 
-## 2-4. 散歩画面（メイン）
-### 操作
-- 右タップ → 右へ歩く  
-- 左タップ → 左へ歩く  
-- タップを離すと止まる  
-- ボタンは置かない
+## 環境要素
+環境は夜の散歩の雰囲気を作る重要な要素です。
+MVPに含まれる要素：
+- 街灯
+- 電柱
+- ベンチ
+- 自動販売機
+- 閉まった商店のシャッター
+- マンション
 
-### インタラクション
-- スタンプ（20種）  
-- 定型文（30種）  
-- コメント連打で羊  
-- 他ユーザーの気配（点）  
-- AIキャラの短い一言（30〜90秒に1回）
+## Advertising Placeholder
+The MVP includes visible locations where sponsorship or advertising can appear.
+Examples:
+- bench back panels
+- vending machine branding
+- shop signs
+- billboards
+These may initially appear as placeholder signs.
 
-### 広告
-- 自販機 / コンビニ / 看板  
-- タップで広告ページへ（新しいタブ）
+## 広告プレースホルダー
+MVPではスポンサーや広告が入る場所だけを先に用意します。
+例：
+- ベンチ背もたれ広告
+- 自販機ロゴ
+- 商店街看板
+- ビルボード
+初期段階ではプレースホルダー表示でも構いません。
 
-## 2-5. 退出
-- 「また夜が来たら」  
-- 「おやすみなさい」
+## Atmosphere
+The service prioritizes a calm nighttime atmosphere.
+Design choices should avoid overstimulation.
+Silence, darkness, and small lights are important.
 
-## 2-6. 終了演出
-- **流れ星が1本だけ静かに横切る → 暗転**
+## 雰囲気
+このサービスは静かな夜の空気感を重視します。
+刺激が強すぎる演出は避けます。
+静けさ、暗さ、小さな灯りが重要な要素です。
 
----
+## MVP Technical Scope
+The MVP focuses on validating the experience rather than scale.
+Target characteristics:
+- small town map
+- low concurrent user count
+- minimal interaction system
+- lightweight environment assets
 
-# 3. Canvas 構造（ビジュアル仕様）
+## MVP技術範囲
+MVPではスケールよりも体験の検証を優先します。
+想定：
+- 小さな街マップ
+- 少人数同時接続
+- 最小限のインタラクション
+- 軽量な環境アセット
 
-## 3-1. レイヤー構成
+## Out of Scope (Future Features)
+The following are intentionally excluded from the MVP:
+- character customization
+- special avatars (ghost, cat, etc.)
+- large maps
+- advanced environment simulation
 
-```
-Layer 0: 夜空（グラデーション）
-Layer 1: 遠景（建物・山）
-Layer 2: 星（田舎道のみ）
-Layer 3: 街灯（光源＋ポール）
-Layer 4: 道（アスファルト）
-Layer 5: 広告（自販機・看板）
-Layer 6: 他ユーザーの気配（点）
-Layer 7: スタンプ・定型文
-Layer 8: 流れ星（終了演出）
-```
-
-## 3-2. スクロール
-- 右タップ → `scrollX += speed`  
-- 左タップ → `scrollX -= speed`  
-- 遠景はパララックスでゆっくり動く  
-- 星は固定（動かない）
-
-## 3-3. 街灯
-- `radialGradient` で柔らかい光  
-- 稀に点滅  
-- 朝に消灯（alpha を 0 に）
-
-## 3-4. 広告
-- 自販機：控えめな発光  
-- コンビニ：看板のみ光る  
-- 看板：点滅なし
-
----
-
-# 4. Firebase 構造（Realtime Database）
-
-## 4-1. presence（他ユーザーの気配）
-
-```
-presence/
-  {uid}/
-    x: number
-    mood: string
-    updatedAt: number
-```
-
-- 1〜2秒ごとに更新  
-- 切断時に自動削除
-
-## 4-2. 入室ログ（気分アイコン）
-
-```
-enterLogs/
-  {logId}/
-    uid: string
-    mood: string
-    timestamp: number
-```
-
-## 4-3. スタンプログ
-
-```
-stampLogs/
-  {logId}/
-    uid: string
-    stampId: string
-    x: number
-    timestamp: number
-```
-
-## 4-4. 定型文ログ
-
-```
-textLogs/
-  {logId}/
-    uid: string
-    textId: string
-    x: number
-    timestamp: number
-```
-
-## 4-5. 広告クリックログ
-
-```
-adClickLogs/
-  {logId}/
-    uid: string
-    adType: string
-    adId: string
-    x: number
-    timestamp: number
-```
-
----
-
-# 5. 技術仕様（Tech Stack）
-
-- **Vanilla JavaScript**  
-- **HTML5 Canvas**（夜の風景・アニメーション）  
-- **Firebase Realtime Database**（presence・ログ）  
-- **Firebase Anonymous Auth**  
-- **PWA 対応**  
-- **No backend server（MVPでは不要）**
-
----
-
-# 6. MVPに含まれないもの（除外範囲）
-
-- 季節依存（夏の虫・冬の白い息など）  
-- 天気依存（雨・霧・反射）  
-- 道の種類の拡張（海沿い・工場地帯など）  
-- 追加広告（バス停・貼り紙・ネオンサインなど）  
-- AIキャラの追加  
-- 朝の演出の強化  
-- ユーザーの歩行履歴  
-- 季節イベント（七夕・クリスマスなど）
-
-これらは **future-ideas.md** に記録済み。
-
----
-
-# 7. MVPの目的（最終確認）
-
-- 夜の静けさを壊さない  
-- 気配を感じられる  
-- 歩くだけで成立する  
-- 広告は風景の一部  
-- UIは最小限  
-- 技術はシンプルで拡張可能  
-- 将来実装の余白を残す
-
----
-
-# 8. 更新対象ファイル（MVP確定後）
-
-MVP確定後は以下を更新する：
-
-- README.md（完成版に合わせて微調整）  
-- firebase-structure.md（必要なら微調整）  
-- future-ideas.md（MVP外の項目を整理）  
-- undecided-items.md（決定済み項目を移動）
-
----
+## MVP対象外（将来実装）
+次の機能はMVPには含めません。
+- キャラクターカスタマイズ
+- 特殊アバター（オバケ、猫など）
+- 大規模マップ
+- 高度な環境シミュレーション
