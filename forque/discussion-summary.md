@@ -560,9 +560,23 @@ future-challengesに追加:
 </details>
 
 
+<details>
+<summary>📝 discussion-summary.md 追記（第六段階 / 2026-03-07）</summary>
+```
+- C2PA・アナログ／物理派生の設計:
+  - デジタル→物理派生（彫刻・陶芸・刺繍等）はC2PA検証不可
+  - メインブランチ作成者に「検証不可形式の申請」として通知し、承認/質問/断るを選択
+  - メタデータにc2pa-verifiable: false / verification-method: author-trustを記録
+  - 「検証不可」を系譜に残すことで透明性を確保
+  - 実装はMVP後期フェーズ
 
+- homage／盗作投票の不平等問題:
+  - 人気ブランチの参加者数が多いと投票が不平等になる
+  - 解決案A: ブランチ単位で1票（参加者数を無効化）
+  - 解決案B: 投票ではなくフラグ制＋運営レビューキュー
+  - 方向性をユーザーと検討中
 
-
+</details>
 
 
 
