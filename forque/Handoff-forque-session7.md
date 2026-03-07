@@ -22,12 +22,15 @@
   "session_status": "handoff",
   "user": "deadbody (鳩川カルキ)",
   "date": "2026-03-08",
-  "pending_tasks": [
+"pending_tasks": [
+    "ランディングページの構成設計（優先度：最高）",
+    "全ファイルの文体・構造統一（整形）",
     "Paceアイコン本体の詳細設計（説明文・英語名・境界線の言語化）",
     "チュートリアルフロー設計（Web先行MVP前提で再設計）",
-    "ランディングページの構成設計",
     "forqueリポジトリの作成",
-    "系譜デモシナリオ「森の声」の詳細設計（オンボーディング用）"
+    "系譜デモシナリオ「森の声」の詳細設計（オンボーディング用）",
+    "Forklore Galaxyとの接続を文書に追記（PHILOSOPHY.md優先・future-challenges.md・specifications.mdの順）"
+  ],
   ],
   "deferred_tasks": [
     "mainless + lineageツリーの可視化実装（Web移行後）",
