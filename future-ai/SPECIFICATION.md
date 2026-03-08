@@ -136,9 +136,31 @@ Phase 5: Perplexity - 仕様書完成
 実装可能な哲学の具現化
 2026.03.09
 
+## Community Features (Optional)
+
+### Oyaji Joke Exchange
+Users can share and exchange "oyaji jokes" with friends or small communities.
+
+The goal is not competition, but shared humor.
+
+Key principles:
+- No ranking systems
+- Lightweight reactions (e.g., "heh", "cold", "classic")
+- Small-group sharing preferred
+- Users can collect and remix jokes
+
+This feature treats oyaji jokes as a playful cultural artifact rather than a performance metric.
+
+
+## Experimental Ideas
+
+### Oyaji Joke Exchange
+
+A lightweight system where users share, collect, and remix oyaji jokes.
+
+The design avoids competitive dynamics and instead focuses on playful cultural exchange.
 
 
 
-
-
+No ranking / No popularity metrics
 
